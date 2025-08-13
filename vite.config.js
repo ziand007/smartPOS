@@ -10,8 +10,15 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src')
     }
   },
-   build: {
+  build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: true,
+    rollupOptions: {
+      // Ensure external dependencies are properly bundled
+      external: []
+    }
   },
+  optimizeDeps: {
+    include: ['react-icons/fi', 'recharts', 'framer-motion']
+  }
 });
